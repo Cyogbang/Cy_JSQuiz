@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Start_BTN,
+.intro_PG,
+.Question_PG {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.BTN_txt {
+    font-size: 1rem;
+}
+
+.intro_BOX {
+    width: 30rem;
+    /* opacity: 0; */
+    border-radius: 1rem;
+    display: none;
+}
+
+.intro_Footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.foot_Buttons {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.foot_Buttons .btn {
+    text-align: center;
+    margin: 0 5px;
+}
+
+.foot_Buttons .btn:hover {
+    background-color: aliceblue;
+    border: 1px solid blue;
+    color: blue;
+    transition: all 0.5s ease;
+}
+
+.question_BOX {
+    width: 35rem;
+    border-radius: 1rem;
+    /* opacity: 50%; */
+    display: none;
+}
+
+.qst_Title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer {
+    display: flex;
+    height: 45px;
+    width: 180px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+}
+
+.ans {
+    height: auto;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.6rem;
+}
+
+.ans:hover {
+    background-color: rgb(232, 255, 223);
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.ans p {
+    padding: 10px 0 0 8px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.ans .times {
+    background-color: rgb(231, 127, 127);
+    border: 1px solid rgb(231, 40, 40);
+    border-radius: 50%;
+}
+
+.ans .check {
+    background-color: rgb(113, 241, 113);
+    border: 1px solid rgb(2, 100, 2);
+    border-radius: 50%;
+}
+
+.options .ans.correct {
+    background-color: rgb(70, 230, 70);
+}
+
+.options .ans.incorrect {
+    background-color: rgb(250, 121, 121);
+}
+
+.qst_Footer {
+    display: flex;
+    height: 2.5rem;
+    justify-content: space-between;
+}
+
+.qst_Footer span {
+    display: flex;
+}
+
+.qst_Footer .btn:hover {
+    background-color: aliceblue;
+    color: blue;
+    transition: all 0.5 ease;
+}
