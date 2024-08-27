@@ -4,6 +4,7 @@ const quitQuiz = document.querySelector (".exit_BTN");
 const continueQuiz = document.querySelector (".Ctnue_BTN");
 const quizPG = document.querySelector (".question_BOX");
 const entryPG = document.querySelector (".start_PG");
+const answers = document.querySelector (".options");
 
 enterQuiz.onclick = () => {
     entryPG.style.display = "none";
@@ -40,7 +41,6 @@ nxt_BTN.onclick = () => {
 
 function showquestions(index) {
     const quest = document.querySelector (".question");
-    const answers = document.querySelector (".options");
     
     let queTag = "<span>"+ questions[index].question +"</span>";
     let ansTag = '<div class="ans shadow-sm">'+ questions[index].options[0] + '</div>'
@@ -58,13 +58,25 @@ function showquestions(index) {
 function optionSelected(answer){
     let UserAns = answer.textContent;
     let correctAnswer = questions[counts].answ;
+    let all_options = answers.children.length;
     
     if (UserAns == correctAnswer) {
-        answer.ClassList.add("correct");
+        answer.classList.add("correct");
         console.log("you are correct");
     } else {
-        answer.ClassList.add("incorrect");
+        answer.classList.add("incorrect");
         console.log("your are wrong");
+
+        for (let i = 0; i < all_options; i++) {
+            if(answers.children[i].textContent == correctAnswer){
+                answers.children[i].setAttribute("class", "ans correct");
+            }
+        }
+    }
+
+    for (let i = 0; i < all_options; i++) {
+        answers.children[i].classList.add("disabled");
+        
     }
 }
 

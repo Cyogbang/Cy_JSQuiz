@@ -18,22 +18,22 @@
 }
 
 .intro_BOX {
-    width: 30rem;
+    max-width: 30rem;
     /* opacity: 0; */
     border-radius: 1rem;
     display: none;
 }
 
-.intro_Footer {
+/* .intro_Footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
-.foot_Buttons {
+/* .foot_Buttons {
     display: flex;
     margin-top: 1rem;
-}
+} */
 
 .foot_Buttons .btn {
     text-align: center;
@@ -48,7 +48,7 @@
 }
 
 .question_BOX {
-    width: 35rem;
+    max-width: 35rem;
     border-radius: 1rem;
     /* opacity: 50%; */
     display: none;
@@ -111,6 +111,10 @@
 
 .options .ans.incorrect {
     background-color: rgb(250, 121, 121);
+}
+
+.options .ans.disabled {
+    pointer-events: none;
 }
 
 .qst_Footer {
