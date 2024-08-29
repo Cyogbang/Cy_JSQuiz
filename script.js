@@ -5,6 +5,8 @@ const continueQuiz = document.querySelector (".Ctnue_BTN");
 const quizPG = document.querySelector (".question_BOX");
 const entryPG = document.querySelector (".start_PG");
 const answers = document.querySelector (".options");
+const countdown = document.querySelector (".countdown");
+const timeLine = document.querySelector (".timer_line");
 
 enterQuiz.onclick = () => {
     entryPG.style.display = "none";
@@ -21,10 +23,15 @@ continueQuiz.onclick = () => {
     quizPG.style.display = "block";
     showquestions(0);
     questioncounter(1);
+    timeCount(20);
+    startTimerline(0);
 }
 
 let counts = 0;
 let questNUM = 1;
+let counter;
+let timeValue = 20;
+let widthValue = 0;
 
 const nxt_BTN = document.querySelector (".qst_Footer .btn");
 
@@ -34,6 +41,11 @@ nxt_BTN.onclick = () => {
         questNUM++;
         showquestions(counts);
         questioncounter(questNUM);
+        clearInterval(counter);
+        timeCount(timeValue);
+        clearInterval(counterLine);
+        startTimerline(widthValue);
+        nxt_BTN.style.display = "none";
     } else {
         console.log("You are done");
     }
@@ -55,7 +67,12 @@ function showquestions(index) {
     }
 }
 
+let correct_Icon = '<span class="check me-3"><i class="bi bi-check"></i></i></span></div>';
+let wrong_Icon = '<span class="times me-3"><i class="bi bi-x"></i></span></div>';
+
 function optionSelected(answer){
+    clearInterval(counter);
+    clearInterval(counterLine);
     let UserAns = answer.textContent;
     let correctAnswer = questions[counts].answ;
     let all_options = answers.children.length;
@@ -63,20 +80,50 @@ function optionSelected(answer){
     if (UserAns == correctAnswer) {
         answer.classList.add("correct");
         console.log("you are correct");
+        // answer.insertAdjacentHTML("beforeend", correct_Icon);
     } else {
         answer.classList.add("incorrect");
         console.log("your are wrong");
-
-        for (let i = 0; i < all_options; i++) {
-            if(answers.children[i].textContent == correctAnswer){
-                answers.children[i].setAttribute("class", "ans correct");
-            }
-        }
+        answer.insertAdjacentHTML("beforeend", wrong_Icon);
     }
 
     for (let i = 0; i < all_options; i++) {
         answers.children[i].classList.add("disabled");
-        
+    }
+    nxt_BTN.style.display = "block";
+
+    for (let i = 0; i < all_options; i++) {
+        if(answers.children[i].textContent == correctAnswer){
+            answers.children[i].setAttribute("class", "ans correct");
+            answers.children[i].insertAdjacentHTML("beforeend", correct_Icon);
+        }
+    }
+}
+
+function timeCount(time){
+    counter = setInterval(timer, 1000);
+    function timer(){
+        countdown.textContent = time;
+        time--;
+        if(time < 9){
+            let addZero = countdown.textContent;
+            countdown.textContent = "0" + addZero;
+        }
+        if (time < 0) {
+            clearInterval(counter);
+            countdown.textContent = "00";
+        }
+    }
+}
+
+function startTimerline(time){
+    counterLine = setInterval(timer, 43);
+    function timer(){
+        time += 1;
+        timeLine.style.width = time + "px";
+        if (time > 480) {
+            clearInterval(counterLine);
+        }
     }
 }
 
