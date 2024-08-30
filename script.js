@@ -34,6 +34,9 @@ let timeValue = 20;
 let widthValue = 0;
 
 const nxt_BTN = document.querySelector (".qst_Footer .btn");
+const resultBox = document.querySelector ("result_BOX");
+const replay = document.querySelector (".replayQuiz");
+const exitQuiz = document.querySelector ("exitQuiz");
 
 nxt_BTN.onclick = () => {
     if (counts < questions.length - 1) {
@@ -48,6 +51,7 @@ nxt_BTN.onclick = () => {
         nxt_BTN.style.display = "none";
     } else {
         console.log("You are done");
+        showResultBox();
     }
 }
 
@@ -98,6 +102,11 @@ function optionSelected(answer){
             answers.children[i].insertAdjacentHTML("beforeend", correct_Icon);
         }
     }
+}
+
+function showResultBox() {
+    quizPG.style.display = "none";
+    resultBox.style.display = "block";
 }
 
 function timeCount(time){
